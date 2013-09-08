@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ticket Master</title>
+    <style>
+      body {
+        min-width: 357px;
+        overflow-x: hidden;
+      }
+
+      img {
+        margin: 5px;
+        border: 2px solid black;
+        vertical-align: middle;
+        width: 75px;
+        height: 75px;
+      }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+	
+  </head>
+  <body>
+  	<a href="index.html" target="_blank" style="float:right"><button class="btn btn-success"> New Ticket </button></a>
+	<a style="float:left;"><button id="clearTicket" class="btn btn-warning" style="width:95px"> Clear Script</button></a>
+    <br><hr>
+    <div id="tickets">
+    	<table style="width:100%;margin-bottom:0px;" class="table table-striped">
+			<tr><th>No.</th><th>Source</th><th>Destination</th><th>Date</th><th>Train No</th><th>Class</th></tr>
+        </table>
+    </div>
+  </body>
+</html>

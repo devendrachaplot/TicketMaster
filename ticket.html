@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ticket Master</title>
+    <style>
+      body {
+        min-width: 357px;
+        overflow-x: hidden;
+      }
+
+      img {
+        margin: 5px;
+        border: 2px solid black;
+        vertical-align: middle;
+        width: 75px;
+        height: 75px;
+      }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/ticket.js"></script>
+	
+  </head>
+  <body>
+  	<a style="float:left"><button id="book" class="btn btn-success" style="width:85px"> Book Now </button></a>
+    <a style="float:left; margin-left:15%"><button id="editTicket" class="btn btn-warning" style="width:85px"> Edit </button></a>
+  	<a style="float:right"><button id="removeTicket" class="btn btn-danger" style="width:85px"> Remove </button></a>
+  	<br><hr>
+    <div id="displayArea">
+		
+    </div>
+  </body>
+</html>

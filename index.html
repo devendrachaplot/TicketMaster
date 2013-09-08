@@ -1,0 +1,384 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ticket Master</title>
+    <style>
+      body {
+        min-width: 357px;
+        overflow-x: hidden;
+      }
+	  
+	  .navbar {
+			-moz-box-shadow: 0px 0px 50px #888888; /* Firefox 3.6 and earlier */
+			box-shadow: 0px 0px 50px #888888;
+		}
+    </style>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/stationCodes.js"></script>
+    <script src="js/trainNo.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+  </head>
+  <body style="background:#ffffff">
+    <div class="navbar" style="height:70px; top:0; left:0; width:100%; z-index:4"> 
+      <div class="navbar-inner" style="background:#424242">
+      	
+        <div class="container" style="padding:0%; margin-left:5%; height:70px">
+          <!--<img src="img/shifu.png" height="45">-->
+          <a class="brand" href="http://www.getshifu.com" style="margin-left:5%; margin-top:20px"><h1 style="color:#FFF">Ticket Master</h1></a>
+          <div class="nav-collapse" style="padding:2px">
+            <ul class="nav" style="vertical-align:middle">
+			  
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+ 	</div>
+    <div class="container">
+    <button id="submit" class="btn-large btn-success" style="float:right"> Submit </button>
+  	<form id='login_data'>
+		<h3>Irctc Login Details</h3>
+        <table>
+        <tr>
+        	<td width="20%">Username</td>
+        	<td width="40%"><input type='text' name='username' id='username'  maxlength="50" width="100px"/></td>
+        </tr>
+        <tr>
+			<td width="20%">Password</td>
+        	<td width="40%"><input type='password' name='password' id='password'  maxlength="50" width="100px"/></td>
+        </tr>
+        </table>
+    </form>
+        <hr>
+    <form id='ticket_data'>
+		<h3>Train Details</h3>
+        <table>
+        <tr>
+        	<td width="20%">Source</td>
+        	<td width="40%"><input type='text' name='src' id='src'  maxlength="50" width="30px"/></td>
+        </tr> 
+		<tr>
+        	<td width="20%">Boarding Point</td>
+        	<td width="40%"><input type='text' name='brdp' id='brdp'  maxlength="50" width="30px"/></td>
+		</tr>
+        <tr>
+        	<td width="20%">Destination</td>
+        	<td width="40%"><input type='text' name='dest' id='dest'  maxlength="50" width="30px"/></td>
+        </tr>
+        <tr>
+        	<td width="20%">Date</td>
+        	<td width="40%"><input type="text" id="book_date" name="book_date" value="" width="100px"></td>
+        </tr>
+        <tr>
+        	<td width="20%">Quota</td>
+        	<td width="40%"><select name="qouta" id="quota"  width="100px">
+                <option selected value="GN">General</option>
+                <option value="CK">Tatkal</option>
+                <option value="LD">Ladies</option>
+            </select></td> <!-- <input type="text" id="qouta" name="qouta" value="" width=100px></td> -->
+        </tr>
+        <tr>
+        	<td width="20%">Train Number</td>
+        	<td width="40%"><input type="text" id="trainNo" name="trainNo" value="" width="100px"></td>
+        </tr>
+        <tr>
+        	<td width="20%">Class</td>
+        	<td width="40%"><select name="class" id="class" width="100px">
+                <option selected value="1A">1A</option>
+                <option value="FC">FC</option>
+                <option value="2A">2A</option>
+                <option value="3A>">3A</option>
+                <option value="3E">3E</option>
+				<option value="CC">CC</option>
+                <option value="SL">SL</option>
+                <option value="2S">2S</option>
+            </select></td> 
+        </tr>
+        <tr>
+        	<td width="20%">Ticket Type</td>
+            <td width="40%"><select name="ticketType"  id="ticketType" width="100px">
+                <option selected value="eticket">e-ticket</option>
+                <option value="iticket">i-ticket</option>
+            </select></td> 
+        </tr>
+        </table>
+    </form>
+        <hr>
+        <h3>Passenger Details</h3>
+        <table id="table">
+        <tr style="text-align:left">
+            <th style="width:25%"> Name </th>
+            <th style="width:15%"> Gender </th>
+            <th style="width:15%"> Age </th>
+            <th style="width:20%"> Berth Preference </th> 
+			<th style="width:20%"> Food Preference </th> 			
+            <th style="width:10%"> ID Card Type </th>
+            <th style="width:10%"> ID Card No. </th>
+			<th style="width:25%"> Senior Citizen </th>
+        </tr>
+        <tr id="row1">
+        <form id="pass1">
+            <td> <input  type="text" name="name"  maxlength="16" style="width:170px" > </td>
+            <td> <select name="gender" style="width:70px">
+                <option selected value="m">Male</option>
+                <option value="f">Female</option>
+            </select> 
+            </td>
+            <td> <input type="text" name="age"  maxlength="3" style="width:50px"> </td>
+            <td> <select name="berth" style="width:80px">
+                <option selected>Lower</option>
+                <option>Middle</option> 
+                <option>Upper</option>
+                <option value="Side_Upper">Side Upper</option>
+                <option value="Side_Lower">Side Lower</option>
+				<option value="Window Seat">Window Seat(For Chair Car)</option>
+				<option value="No Choice">No Choice(For Chair Car)</option>
+            </select>
+            </td>          
+			<td>
+				<select name="food" style="width:80px">           
+				<option selected value="Veg">Veg</option>
+				<option value="Non_Veg">Non-Veg</option>
+				</select>
+			</td>			
+            <td> <select name="idCardType" style="width:120px">
+                    <option value="0">Select</option>
+                    <option value="DRLC">Driving License</option>
+                    <option value="PSPT">Passport</option>
+                    <option value="PANC">Pan Card</option>
+                    <option value="VOTE">Voter I-Card</option>
+                    <option value="GOVT">Govt issued I-Card</option>
+                    <option value="STUD">Student I-Card</option>
+                    <option value="NBPB">Bank Passbook</option>
+                    <option value="CRCD">Credit Card</option>
+                    <option value="UICD">Unique I-Card</option>
+                 </select>
+             </td>
+             <td> <input type="text" name="idCardNo" maxlength="20" size="30" value="" style="width:120px"> </td>
+			 <td> <input type="checkbox" name="senior"></td>
+        </form>
+        </tr>
+        <tr id="row2">
+        <form id="pass2">
+            <td> <input  type="text" name="name"  maxlength="16" style="width:170px" /> </td>
+            <td> <select name="gender" style="width:70px">
+                <option selected value="m">Male</option>
+                <option value="f">Female</option>
+            </select> 
+            </td>
+            <td> <input type="text" name="age"  maxlength="3" style="width:50px"/> </td>
+            <td> <select name="berth" style="width:80px">
+                <option selected>Lower</option>
+                <option>Middle</option> 
+                <option>Upper</option>
+                <option value="Side_Upper">Side Upper</option>
+                <option value="Side_Lower">Side Lower</option>
+				<option value="Window Seat">Window Seat(For Chair Car)</option>
+				<option value="No Choice">No Choice(For Chair Car)</option>
+            </select>
+            </td>    
+			<td>
+				<select name="food" style="width:80px">           
+				<option selected value="Veg">Veg</option>
+				<option value="Non_Veg">Non-Veg</option>
+				</select>
+			</td>							
+            <td> <select name="idCardType" style="width:120px">
+                    <option value="0">Select</option>
+                    <option value="DRLC">Driving License</option>
+                    <option value="PSPT">Passport</option>
+                    <option value="PANC">Pan Card</option>
+                    <option value="VOTE">Voter I-Card</option>
+                    <option value="GOVT">Govt issued I-Card</option>
+                    <option value="STUD">Student I-Card</option>
+                    <option value="NBPB">Bank Passbook</option>
+                    <option value="CRCD">Credit Card</option>
+                    <option value="UICD">Unique I-Card</option>
+                 </select>
+             </td>
+             <td> <input type="text" name="idCardNo" maxlength="20" size="30" value="" style="width:120px"/> </td>
+			 <td> <input type="checkbox" name="senior"/></td>
+        </form>
+        </tr>
+        <tr id="row3">
+        <form id="pass3">
+            <td> <input  type="text" name="name"  maxlength="16" style="width:170px" /> </td>
+            <td> <select name="gender" style="width:70px">
+                <option selected value="m">Male</option>
+                <option value="f">Female</option>
+            </select> 
+            </td>
+            <td> <input type="text" name="age"  maxlength="3" style="width:50px"/> </td>
+            <td> <select name="berth" style="width:80px">
+                <option selected>Lower</option>
+                <option>Middle</option> 
+                <option>Upper</option>
+                <option value="Side_Upper">Side Upper</option>
+                <option value="Side_Lower">Side Lower</option>
+				<option value="Window Seat">Window Seat(For Chair Car)</option>
+				<option value="No Choice">No Choice(For Chair Car)</option>
+            </select>
+            </td>         
+			<td>
+				<select name="food" style="width:80px">           
+				<option selected value="Veg">Veg</option>
+				<option value="Non_Veg">Non-Veg</option>
+				</select>
+			</td>				
+            <td> <select name="idCardType" style="width:120px">
+                    <option value="0">Select</option>
+                    <option value="DRLC">Driving License</option>
+                    <option value="PSPT">Passport</option>
+                    <option value="PANC">Pan Card</option>
+                    <option value="VOTE">Voter I-Card</option>
+                    <option value="GOVT">Govt issued I-Card</option>
+                    <option value="STUD">Student I-Card</option>
+                    <option value="NBPB">Bank Passbook</option>
+                    <option value="CRCD">Credit Card</option>
+                    <option value="UICD">Unique I-Card</option>
+                 </select>
+             </td>
+             <td> <input type="text" name="idCardNo" maxlength="20" size="30" value="" style="width:120px"/> </td>
+			 <td> <input type="checkbox" name="senior"/></td>
+        </form>
+        </tr>
+        <tr id="row4">
+        <form id="pass4">
+            <td> <input  type="text" name="name"  maxlength="16" style="width:170px" /> </td>
+            <td> <select name="gender" style="width:70px">
+                <option selected value="m">Male</option>
+                <option value="f">Female</option>
+            </select> 
+            </td>
+            <td> <input type="text" name="age"  maxlength="3" style="width:50px"/> </td>
+            <td> <select name="berth" style="width:80px">
+                <option selected>Lower</option>
+                <option>Middle</option> 
+                <option>Upper</option>
+                <option value="Side_Upper">Side Upper</option>
+                <option value="Side_Lower">Side Lower</option>
+				<option value="Window Seat">Window Seat(For Chair Car)</option>
+				<option value="No Choice">No Choice(For Chair Car)</option>
+            </select>
+            </td>    
+			<td>
+				<select name="food" style="width:80px">           
+				<option selected value="Veg">Veg</option>
+				<option value="Non_Veg">Non-Veg</option>
+				</select>
+			</td>				
+            <td> <select name="idCardType" style="width:120px">
+                    <option value="0">Select</option>
+                    <option value="DRLC">Driving License</option>
+                    <option value="PSPT">Passport</option>
+                    <option value="PANC">Pan Card</option>
+                    <option value="VOTE">Voter I-Card</option>
+                    <option value="GOVT">Govt issued I-Card</option>
+                    <option value="STUD">Student I-Card</option>
+                    <option value="NBPB">Bank Passbook</option>
+                    <option value="CRCD">Credit Card</option>
+                    <option value="UICD">Unique I-Card</option>
+                 </select>
+             </td>
+             <td> <input type="text" name="idCardNo" maxlength="20" size="30" value="" style="width:120px"/> </td>
+			 <td> <input type="checkbox" name="senior"/></td>
+        </form>
+        </tr>
+        <tr id="row5">
+        <form id="pass5">
+            <td> <input  type="text" name="name"  maxlength="16" style="width:170px" /> </td>
+            <td> <select name="gender" style="width:70px">
+                <option selected value="m">Male</option>
+                <option value="f">Female</option>
+            </select> 
+            </td>
+            <td> <input type="text" name="age"  maxlength="3" style="width:50px"/> </td>
+            <td> <select name="berth" style="width:80px">
+                <option selected>Lower</option>
+                <option>Middle</option> 
+                <option>Upper</option>
+                <option value="Side_Upper">Side Upper</option>
+                <option value="Side_Lower">Side Lower</option>
+				<option value="Window Seat">Window Seat(For Chair Car)</option>
+				<option value="No Choice">No Choice(For Chair Car)</option>
+            </select>
+            </td>     
+			<td>
+				<select name="food" style="width:80px">           
+				<option selected value="Veg">Veg</option>
+				<option value="Non_Veg">Non-Veg</option>
+				</select>
+			</td>				
+            <td> <select name="idCardType" style="width:120px">
+                    <option value="0">Select</option>
+                    <option value="DRLC">Driving License</option>
+                    <option value="PSPT">Passport</option>
+                    <option value="PANC">Pan Card</option>
+                    <option value="VOTE">Voter I-Card</option>
+                    <option value="GOVT">Govt issued I-Card</option>
+                    <option value="STUD">Student I-Card</option>
+                    <option value="NBPB">Bank Passbook</option>
+                    <option value="CRCD">Credit Card</option>
+                    <option value="UICD">Unique I-Card</option>
+                 </select>
+             </td>
+             <td> <input type="text" name="idCardNo" maxlength="20" size="30" value="" style="width:120px"/> </td>
+			 <td> <input type="checkbox" name="senior"/></td>
+        </form>
+        </tr>
+        <tr id="row6">
+        <form id="pass6">
+            <td> <input  type="text" name="name"  maxlength="16" style="width:170px" /> </td>
+            <td> <select name="gender" style="width:70px">
+                <option selected value="m">Male</option>
+                <option value="f">Female</option>
+            </select> 
+            </td>
+            <td> <input type="text" name="age"  maxlength="3" style="width:50px"/> </td>
+            <td> <select name="berth" style="width:80px">
+                <option selected>Lower</option>
+                <option>Middle</option> 
+                <option>Upper</option>
+                <option value="Side_Upper">Side Upper</option>
+                <option value="Side_Lower">Side Lower</option>
+				<option value="Window Seat">Window Seat(For Chair Car)</option>
+				<option value="No Choice">No Choice(For Chair Car)</option>
+            </select>
+            </td>     
+			<td>
+				<select name="food" style="width:80px">           
+				<option selected value="Veg">Veg</option>
+				<option value="Non_Veg">Non-Veg</option>
+				</select>
+			</td>				
+            <td> <select name="idCardType" style="width:120px">
+                    <option value="0">Select</option>
+                    <option value="DRLC">Driving License</option>
+                    <option value="PSPT">Passport</option>
+                    <option value="PANC">Pan Card</option>
+                    <option value="VOTE">Voter I-Card</option>
+                    <option value="GOVT">Govt issued I-Card</option>
+                    <option value="STUD">Student I-Card</option>
+                    <option value="NBPB">Bank Passbook</option>
+                    <option value="CRCD">Credit Card</option>
+                    <option value="UICD">Unique I-Card</option>
+                 </select>
+             </td>
+             <td> <input type="text" name="idCardNo" maxlength="20" size="30" value="" style="width:120px"/> </td>
+			 <td> <input type="checkbox" name="senior"/></td>
+        </form>
+        </tr>
+        </table>
+        <br>
+		<strong>Mobile Number</strong> <input type="text" name="mobileNumber" maxlength="10" size="12">
+		<br>
+    <button id="submit1" class="btn btn-large btn-success" > Submit </button>
+    <p>&nbsp;</p>
+    </div>
+  </body>
+</html>
+<!-- onBlur='updateDOM(this)' -->

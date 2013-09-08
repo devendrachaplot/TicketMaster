@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "TicketMaster",
+  "description": "Quick Easy Automatic Ticket Booking on IRCTC (Including tatkal)",
+  "version": "1.31",
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": ["https://www.irctc.co.in/*"],
+      "js": ["js/jquery.js", "js/irctc.js", "js/data.js", "js/captcha.js"]
+    }
+  ],
+  
+  "browser_action": {
+    "default_popup": "popup.html",
+        "default_icon": "icon.png"
+  },
+  "permissions": [
+    "tabs", "https://www.irctc.co.in/*","storage"
+  ]
+}
