@@ -8,6 +8,6 @@ Download extension from: https://chrome.google.com/webstore/detail/ticketmaster/
 
 Demo Video: http://www.youtube.com/watch?v=r4B78jQkq8I
 
-Please mail bugs and suggestions to devendrachaplot@gmail.com
+EDIT: The extension has been discontinued after IRCTC changed their website.
 
 Credits: Devendra Chaplot, Nishanth Dikkala, Priyank Chhipa, Rahul Gupta 
